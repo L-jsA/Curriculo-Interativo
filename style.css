@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset and Global Styles */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+   scroll-behavior: smooth;
+}
+
+:root {
+   --bg-color: #0d0e15;
+   --text-color: #e0e0e0;
+   --primary-color: #ff4b91;
+   --secondary-color: #ff90c9;
+   --glass-bg: rgba(255, 255, 255, 0.05);
+   --glass-border: rgba(255, 255, 255, 0.1);
+   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+body {
+   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+   background-size: 400% 400%;
+   animation: gradientBG 15s ease infinite;
+   color: var(--text-color);
+   min-height: 100vh;
+   overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+   0% {
+      background-position: 0% 50%;
+   }
+
+   50% {
+      background-position: 100% 50%;
+   }
+
+   100% {
+      background-position: 0% 50%;
+   }
+}
+
+.interface {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 20px;
+}
+
+.flex {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+/* Header Styles */
+header {
+   padding: 20px 0;
+   position: sticky;
+   top: 0;
+   z-index: 1000;
+   background: rgba(13, 14, 21, 0.7);
+   backdrop-filter: blur(15px);
+   border-bottom: 1px solid var(--glass-border);
+   transition: all 0.3s ease;
+}
+
+header>.interface {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.logo a {
+   display: flex;
+   align-items: center;
+}
+
+.icon {
+   width: 50px;
+   filter: drop-shadow(0 0 10px var(--primary-color));
+   transition: transform 0.3s ease;
+}
+
+.icon:hover {
+   transform: rotate(-10deg) scale(1.1);
+}
+
+header nav ul {
+   list-style-type: none;
+   display: flex;
+   gap: 30px;
+}
+
+header nav ul li {
+   font-size: 16px;
+   font-weight: 500;
+}
+
+header a {
+   color: var(--text-color);
+   text-decoration: none;
+   position: relative;
+   transition: color 0.3s ease;
+}
+
+header nav ul li a::after {
+   content: '';
+   position: absolute;
+   width: 0;
+   height: 2px;
+   bottom: -5px;
+   left: 0;
+   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+   transition: width 0.3s ease;
+}
+
+header nav ul li a:hover {
+   color: var(--secondary-color);
+}
+
+header nav ul li a:hover::after {
+   width: 100%;
+}
+
+/* Button Global */
+button {
+   padding: 12px 30px;
+   font-size: 16px;
+   font-weight: 600;
+   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+   color: white;
+   border: none;
+   border-radius: 30px;
+   cursor: pointer;
+   box-shadow: 0 5px 15px rgba(255, 75, 145, 0.4);
+   transition: all 0.3s ease;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+}
+
+button:hover {
+   transform: translateY(-3px);
+   box-shadow: 0 8px 25px rgba(255, 75, 145, 0.6);
+}
+
+header .btn-contato button {
+   padding: 10px 25px;
+   font-size: 14px;
+}
+
+/* Typography Headings */
+h2.título {
+   font-size: 42px;
+   text-align: center;
+   margin-bottom: 50px;
+   font-weight: 700;
+   position: relative;
+   display: inline-block;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+h2.título::after {
+   content: '';
+   position: absolute;
+   width: 50%;
+   height: 4px;
+   background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+   bottom: -10px;
+   left: 25%;
+   border-radius: 2px;
+}
+
+h2.título span,
+.topo-do-site h1 span,
+.sobre .txt-sobre h2 span {
+   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   display: inline-block;
+}
+
+/* Hero Section (Topo do site) */
+section.topo-do-site {
+   padding: 100px 0;
+   min-height: calc(100vh - 90px);
+   display: flex;
+   align-items: center;
+}
+
+section.topo-do-site .flex {
+   align-items: center;
+   justify-content: space-between;
+}
+
+.text-topo-site {
+   flex: 1;
+   min-width: 300px;
+   padding-right: 40px;
+}
+
+.topo-do-site h1 {
+   font-size: 56px;
+   line-height: 1.2;
+   margin-bottom: 30px;
+   font-weight: 700;
+}
+
+.topo-do-site h1 span {
+   font-size: 60px;
+}
+
+.card {
+   background: var(--glass-bg);
+   backdrop-filter: blur(10px);
+   border: 1px solid var(--glass-border);
+   border-radius: 20px;
+   box-shadow: var(--glass-shadow);
+   padding: 30px;
+   margin-top: 30px;
+   position: relative;
+   overflow: hidden;
+}
+
+.card::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: -100%;
+   width: 50%;
+   height: 100%;
+   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+   transform: skewX(-20deg);
+   transition: 0.5s;
+}
+
+.card:hover::before {
+   left: 150%;
+}
+
+.topo-do-site .text-topo-site p {
+   color: #ccc;
+   font-size: 18px;
+   line-height: 1.8;
+}
+
+.img-topo-site {
+   flex: 1;
+   display: flex;
+   justify-content: center;
+   min-width: 300px;
+}
+
+.img-topo-site img {
+   max-width: 100%;
+   width: 400px;
+   border-radius: 30px;
+   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+   border: 3px solid rgba(255, 75, 145, 0.3);
+   animation: flutuar 3s ease-in-out infinite alternate;
+}
+
+@keyframes flutuar {
+   0% {
+      transform: translateY(0px);
+   }
+
+   100% {
+      transform: translateY(-20px);
+   }
+}
+
+/* Especialidades Section */
+section.especialidades {
+   padding: 100px 0;
+   background: rgba(0, 0, 0, 0.1);
+}
+
+.especialidades-box {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 30px;
+   width: 100%;
+   margin-top: 40px;
+}
+
+.bloco-um,
+.bloco-dois,
+.bloco-três {
+   background: var(--glass-bg);
+   border: 1px solid var(--glass-border);
+   padding: 40px 30px;
+   border-radius: 25px;
+   backdrop-filter: blur(10px);
+   box-shadow: var(--glass-shadow);
+   transition: all 0.4s ease;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   position: relative;
+   overflow: hidden;
+}
+
+.bloco-um:hover,
+.bloco-dois:hover,
+.bloco-três:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 15px 40px rgba(255, 75, 145, 0.15);
+   border-color: rgba(255, 75, 145, 0.3);
+}
+
+.bloco-um::after,
+.bloco-dois::after,
+.bloco-três::after {
+   content: '';
+   position: absolute;
+   width: 100px;
+   height: 100px;
+   background: var(--primary-color);
+   border-radius: 50%;
+   filter: blur(60px);
+   z-index: -1;
+   opacity: 0;
+   transition: opacity 0.4s ease;
+}
+
+.bloco-um:hover::after,
+.bloco-dois:hover::after,
+.bloco-três:hover::after {
+   opacity: 0.3;
+}
+
+.icon-box {
+   width: 80px;
+   margin-bottom: 25px;
+   transition: transform 0.3s;
+}
+
+.bloco-um:hover .icon-box,
+.bloco-dois:hover .icon-box,
+.bloco-três:hover .icon-box {
+   transform: scale(1.1);
+}
+
+.especialidades-box h3 {
+   font-size: 24px;
+   margin-bottom: 15px;
+   color: #fff;
+   font-weight: 600;
+}
+
+.especialidades-box p {
+   color: #bbb;
+   font-size: 15px;
+   line-height: 1.6;
+}
+
+/* Sobre Mim Section */
+section.sobre {
+   padding: 100px 0;
+}
+
+section.sobre .flex {
+   align-items: center;
+   gap: 60px;
+}
+
+.img-sobre {
+   flex: 1;
+   min-width: 300px;
+   display: flex;
+   justify-content: center;
+}
+
+.photo {
+   width: 100%;
+   max-width: 400px;
+   border-radius: 30px;
+   box-shadow: 20px 20px 0px rgba(255, 75, 145, 0.2);
+   transition: all 0.4s ease;
+}
+
+.photo:hover {
+   transform: translate(-10px, -10px);
+   box-shadow: 30px 30px 0px rgba(255, 75, 145, 0.4);
+}
+
+.txt-sobre {
+   flex: 1;
+   min-width: 350px;
+}
+
+.txt-sobre h2 {
+   font-size: 46px;
+   line-height: 1.1;
+   margin-bottom: 30px;
+   font-weight: 700;
+}
+
+.txt-sobre p {
+   color: #ccc;
+   font-size: 17px;
+   line-height: 1.8;
+   margin-bottom: 20px;
+   text-align: justify;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+   .topo-do-site h1 {
+      font-size: 46px;
+   }
+
+   .topo-do-site h1 span {
+      font-size: 50px;
+   }
+
+   .txt-sobre h2 {
+      font-size: 38px;
+   }
+}
+
+@media (max-width: 768px) {
+   header nav ul {
+      display: none;
+   }
+
+   /* Could be a mobile menu instead */
+   .topo-do-site {
+      text-align: center;
+      padding: 60px 0;
+   }
+
+   .text-topo-site {
+      padding-right: 0;
+      margin-bottom: 50px;
+   }
+
+   .img-topo-site img {
+      width: 80%;
+   }
+
+   h2.título {
+      font-size: 34px;
+   }
+
+   .img-sobre {
+      margin-bottom: 40px;
+   }
+
+   .txt-sobre {
+      text-align: center;
+   }
+
+   .txt-sobre p {
+      text-align: center;
+   }
+}
